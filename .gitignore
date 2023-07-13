@@ -1,0 +1,9 @@
+venv/
+env/
+.env
+.vscode/
+*.xml
+*.pyc
+*.iml
+.idea/
+.pytest_cache/
