@@ -34,3 +34,20 @@ class RegisterSerializer(serializers.Serializer):
         user.set_password(validated_data['password'])
         user.save()
         return user
+    
+
+class BookSerializer(serializers.Serializer):
+    book_name = serializers.CharField()
+    publish_date = serializers.DateTimeField()
+    book_owner = serializers.CharField()
+
+
+class UserProfileSerializer(serializers.Serializer):
+    user_role = serializers.CharField()
+    user_department = serializers.CharField()
+    employee = serializers.CharField()
+
+class LibrarySerializer(serializers.Serializer):
+    library_name = serializers.CharField()    
+    # members = serializers.CharField()
+    
