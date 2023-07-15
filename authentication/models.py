@@ -30,7 +30,7 @@ class Book(models.Model):
 
     book_name = models.CharField()
     publish_date = models.DateTimeField()
-    book_owner = models.ForeignKey(User, on_delete=models.CASCADE)
+    book_owner = models.ForeignKey(User, on_delete=models.SET_NULL, null=True)
 
     class Meta:
         verbose_name = _('book')
@@ -48,4 +48,8 @@ class UserProfile(models.Model):
 class Library(models.Model):
     library_name = models.CharField()
     members = models.ManyToManyField(User)
-    
+
+
+# class LibraryMembers(models.Model):
+#     library_id = models.OneToOneField(Library, on_delete=models.CASCADE)
+#     user_id = models.OneToOneField(User, on_delete=models.CASCADE)
