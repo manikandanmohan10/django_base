@@ -88,7 +88,8 @@ class Generic(GenericAPIView):
     def get(self, request):
         print(request.META)
         print(request.META.get('SERVER_SOFTWARE'))
-        return Response('GET From GenericView', status=STATUS.OK)
+        # return Response('GET From GenericView ---', status=STATUS.OK)
+        return HttpResponse('GET From GenericView', status=STATUS.OK)
     
     def put(self, request):
         return Response('PUT from Genericview', status=STATUS.OK)
@@ -177,5 +178,5 @@ class LibrarySubscriptionAPI(APIView):
         if user and library:
             library.members.add(user)   
             library.save()
-            
+
         return Response('Success', status=STATUS.OK)
