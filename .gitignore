@@ -7,3 +7,4 @@ env/
 *.iml
 .idea/
 .pytest_cache/
+logs/

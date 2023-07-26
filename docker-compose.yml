@@ -1,0 +1,28 @@
+version: '3.8'
+
+services:
+  db:
+    container_name: postgresql
+    image: postgres:14
+    restart: always
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres
+      POSTGRES_DB: mydatabase
+    ports:
+      - "8888:5432"
+    volumes:
+      - mydata:/var/lib/postgresql/data
+
+  django:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    restart: always
+    ports:
+      - "8000:8000"
+    depends_on:
+      - db
+
+volumes:
+  mydata:

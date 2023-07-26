@@ -1,4 +1,4 @@
-import requests
+import logging
 from django.shortcuts import render
 from rest_framework.views import APIView
 from rest_framework.generics import CreateAPIView, ListAPIView, GenericAPIView, UpdateAPIView, DestroyAPIView
@@ -11,6 +11,7 @@ from http import HTTPStatus as STATUS
 from rest_framework_simplejwt.tokens import RefreshToken, AccessToken
 from django.db.models import Q
 
+logger = logging.getLogger(__name__)
 # Create your views here.
 class Register(CreateAPIView):
     serializer_class = RegisterSerializer
@@ -86,9 +87,13 @@ class Generic(GenericAPIView):
         return Response('POST From GenericView', status=STATUS.OK)
     
     def get(self, request):
-        print(request.META)
-        print(request.META.get('SERVER_SOFTWARE'))
+        # print(request.META)
+        # print(request.META.get('SERVER_SOFTWARE'))
         # return Response('GET From GenericView ---', status=STATUS.OK)
+        logger.debug('This is a debug message')
+        logger.info('This is an info message')
+        logger.warning('This is a warning message')
+        logger.error('This is an error message')
         return HttpResponse('GET From GenericView', status=STATUS.OK)
     
     def put(self, request):
