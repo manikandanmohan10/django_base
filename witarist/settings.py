@@ -84,8 +84,8 @@ WSGI_APPLICATION = 'witarist.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
-        'HOST': 'localhost',
-        'NAME': 'witarist',
+        'HOST': '172.27.0.2',
+        'NAME': 'mydatabase',
         'USER': 'postgres',
         'PASSWORD': 'postgres',
         'PORT': '5432',
@@ -164,27 +164,27 @@ CELERY_TASK_TIME_LIMIT = 30 * 60
 CELERY_BROKER_URL = 'redis://localhost:6379/0'
 
 # logging/#configure-responsive-logging
-today = date.today()
+# today = date.today()
 
-LOGGING = {
-    'version': 1,
-    'handlers': {
-        'file': {
-            'level': 'DEBUG',
-            'class': 'logging.FileHandler',
-            'filename': f'./logs/{str(today)}.log',
-        },
-    },
-    'loggers': {
-        'django': {
-            'handlers': ['file'],
-            'level': 'INFO',
-        },
-    },
-    'formatter': {
-        'simple': {
-            'format': '{levelname} {asctime} {module} {process:d} {thread:d} {message}',
-            'style': '{',
-        }
-    }
-}
+# LOGGING = {
+#     'version': 1,
+#     'handlers': {
+#         'file': {
+#             'level': 'DEBUG',
+#             'class': 'logging.FileHandler',
+#             'filename': f'./logs/{str(today)}.log',
+#         },
+#     },
+#     'loggers': {
+#         'django': {
+#             'handlers': ['file'],
+#             'level': 'INFO',
+#         },
+#     },
+#     'formatter': {
+#         'simple': {
+#             'format': '{levelname} {asctime} {module} {process:d} {thread:d} {message}',
+#             'style': '{',
+#         }
+#     }
+# }

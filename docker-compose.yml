@@ -1,8 +1,6 @@
-version: '3.8'
-
 services:
   db:
-    container_name: postgresql
+    container_name: postgresqll
     image: postgres:14
     restart: always
     environment:
@@ -19,10 +17,18 @@ services:
       context: .
       dockerfile: Dockerfile
     restart: always
+    volumes:
+      - .:/code
     ports:
-      - "8000:8000"
+      - "8080:8000"
     depends_on:
       - db
+    entrypoint:
+      - /bin/sh
+      - -c
+      - |
+        python manage.py migrate &&
+        python manage.py runserver 0.0.0.0:8000
 
 volumes:
   mydata:

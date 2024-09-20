@@ -23,6 +23,9 @@ class User(AbstractUser):
                 }
         
         return token
+    
+    def __str__(self):
+        return self.email
 
 
 class Book(models.Model):
@@ -49,7 +52,3 @@ class Library(models.Model):
     library_name = models.CharField()
     members = models.ManyToManyField(User)
 
-
-# class LibraryMembers(models.Model):
-#     library_id = models.OneToOneField(Library, on_delete=models.CASCADE)
-#     user_id = models.OneToOneField(User, on_delete=models.CASCADE)
